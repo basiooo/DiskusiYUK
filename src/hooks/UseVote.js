@@ -20,27 +20,27 @@ export const useVote = () => {
         neutralizeDownVote,
         data
     }) => {
-        const handleUpVote = () => {
+        const handleUpVote = async () => {
             if (!auth) {
                 return
             }
             if (upVotesBy.includes(auth.id)) {
-                neutralizeUpVote(data)
+                await neutralizeUpVote(data)
             } else {
-                neutralizeDownVote(data)
-                upVote(data)
+                await neutralizeDownVote(data)
+                await upVote(data)
             }
         }
 
-        const handleDownVote = () => {
+        const handleDownVote = async () => {
             if (!auth) {
                 return
             }
             if (downVotesBy.includes(auth.id)) {
-                neutralizeDownVote(data)
+                await neutralizeDownVote(data)
             } else {
-                neutralizeUpVote(data)
-                downVote(data)
+                await neutralizeUpVote(data)
+                await downVote(data)
             }
         }
         return {
