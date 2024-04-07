@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage: $0 [--run-dev] {--run-build]" 1>&2
+    echo "Usage: $0 [--run-dev] [--run-build] [--run-ci-test]" 1>&2
     exit 1
 }
 
@@ -19,6 +19,10 @@ while [[ $# -gt 0 ]]; do
         ;;
         --run-build)
             COMMAND='npm run build' docker compose up mrwde $args
+            shift
+        ;;
+        --run-ci-test)
+            COMMAND='npm run ci:test' docker compose up mrwde $args
             shift
         ;;
         *)

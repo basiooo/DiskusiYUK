@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: { browser: true, es2020: true, "cypress/globals": true },
   extends: [
     "eslint-config-standard",
     "eslint:recommended",
@@ -8,11 +8,12 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "prettier",
+    "plugin:storybook/recommended"
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parserOptions: { ecmaVersion: "latest", sourceType: "module" },
   settings: { react: { version: "18.2" } },
-  plugins: ["react-refresh", "react", "simple-import-sort"],
+  plugins: ["react-refresh", "react", "simple-import-sort", "cypress"],
   rules: {
     "react-refresh/only-export-components": [
       "warn",

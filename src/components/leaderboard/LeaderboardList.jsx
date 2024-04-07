@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { LeaderboardShape } from '../../utils/shapes'
 import LeaderboardSkeleton from '../skeleton/LeaderboardSkeleton'
 
-const LeaderboardList = ({ leaderboard, isLoading = false }) => {
+const LeaderboardList = ({ leaderboards, isLoading = false }) => {
+
   return (
     <section className="card w-full bg-base-200 shadow-xl">
       <div className="card-body">
@@ -26,7 +27,8 @@ const LeaderboardList = ({ leaderboard, isLoading = false }) => {
                     </td>
                   </tr>
                   :
-                  leaderboard.map((item, index) => (
+
+                  leaderboards.sort((a, b) => b.score - a.score).map((item, index) => (
                     <tr key={item.user.id} className={index % 2 ? "bg-base-100" : "bg-base-300"}>
                       <td>
                         <div className="flex items-center gap-3">
@@ -65,7 +67,7 @@ const LeaderboardList = ({ leaderboard, isLoading = false }) => {
   )
 }
 LeaderboardList.propTypes = {
-  leaderboard: PropTypes.arrayOf(PropTypes.shape(LeaderboardShape)),
+  leaderboards: PropTypes.arrayOf(PropTypes.shape(LeaderboardShape)),
   isLoading: PropTypes.bool,
 
 }

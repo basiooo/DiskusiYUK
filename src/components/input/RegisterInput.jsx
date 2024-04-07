@@ -24,6 +24,7 @@ const RegisterInput = ({ register }) => {
     return (
         <form onSubmit={handleSubmit}>
             <input
+                id="name"
                 type="text"
                 placeholder="Name"
                 minLength={MIN_NAME_LENGTH}
@@ -34,6 +35,7 @@ const RegisterInput = ({ register }) => {
                 required
             />
             <input
+                id="email"
                 type="email"
                 placeholder="Email"
                 value={email}
@@ -44,6 +46,7 @@ const RegisterInput = ({ register }) => {
                 maxLength={MAX_EMAIL_LENGTH}
             />
             <input
+                id="password"
                 type="password"
                 placeholder="Password"
                 minLength={MIN_PASSWORD_LENGTH}
@@ -53,7 +56,7 @@ const RegisterInput = ({ register }) => {
                 className="input input-bordered focus:input-info w-full my-2"
                 required
             />
-            <button type="submit" disabled={isDisabled} className="btn btn-info w-full mt-2 text-lg">Login</button>
+            <button type="submit" disabled={isDisabled} className="btn btn-info w-full mt-2 text-lg">Register</button>
         </form>
 
     )

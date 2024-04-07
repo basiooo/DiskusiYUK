@@ -4,7 +4,10 @@ const useInput = (defaultValue = "") => {
   const [value, setValue] = useState(defaultValue)
 
   function handleValueChange({ target }) {
-    const value = target.value || target
+    let value = target.value
+    if (target.value === undefined) {
+      value = target
+    }
     setValue(value)
   }
 

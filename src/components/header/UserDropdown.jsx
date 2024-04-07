@@ -16,7 +16,7 @@ const UserDropdown = ({ auth }) => {
         }
     }
     return (
-        <div className="dropdown dropdown-end !z-50">
+        <div className="dropdown dropdown-end !z-50" >
             <div
                 tabIndex={0}
                 role="button"

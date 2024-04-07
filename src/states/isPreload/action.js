@@ -25,7 +25,6 @@ export const isPreloadThunks = {
         return async (dispatch) => {
             dispatch(showLoading())
             try {
-                // preload process
                 let value = null
                 if (tokenHandler.has()) {
                     const { status, user } = await usersAPI.me()
@@ -33,10 +32,8 @@ export const isPreloadThunks = {
                 }
                 dispatch(authAction.set(value))
             } catch (error) {
-                // fallback process
                 dispatch(authAction.set(null))
             } finally {
-                // end preload process
                 dispatch(isPreloadAction.set(false))
             }
             dispatch(hideLoading())

@@ -21,7 +21,7 @@ export const leaderboardThunks = {
         return async (dispatch) => {
             dispatch(showLoading())
             const { status, message, leaderboards } = await leaderboardAPI.getLeaderboard()
-            if (status === 'fail') {
+            if (status === 'failed') {
                 dispatch(hideLoading())
                 throw new Error(message)
             }
