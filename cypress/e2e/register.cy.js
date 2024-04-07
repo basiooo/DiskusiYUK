@@ -30,7 +30,7 @@ describe('Register spec', () => {
         cy.get('#email').type(`${uuidv4().replaceAll("-", "")}@gmail.com`)
         cy.get('#password').type(faker.string.alphanumeric(10))
         cy.get('button[type="submit"]').click()
-        cy.url().should("eq", "http://localhost:5173/login")
+        cy.url().should("eq", "http://localhost:5173/login1")
     })
 })
 
