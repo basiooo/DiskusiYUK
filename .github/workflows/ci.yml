@@ -3,7 +3,7 @@ name: Continuous Integration
 on: push
 
 jobs:
-  lint and testing:
+  lint_and_testing:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
