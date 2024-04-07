@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker"
-import { randomUUID } from "crypto"
+import { v4 as uuidv4 } from 'uuid'
 describe('Register spec', () => {
     beforeEach(() => {
         cy.visit('http://localhost:5173/register')
@@ -27,7 +27,7 @@ describe('Register spec', () => {
 
     it('should redirect to login page when success register', () => {
         cy.get('#name').type(faker.person.fullName())
-        cy.get('#email').type(`${randomUUID().replaceAll("-", "")}@gmail.com`)
+        cy.get('#email').type(`${uuidv4().replaceAll("-", "")}@gmail.com`)
         cy.get('#password').type(faker.string.alphanumeric(10))
         cy.get('button[type="submit"]').click()
         cy.url().should("eq", "http://localhost:5173/login")
