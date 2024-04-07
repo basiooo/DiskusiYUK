@@ -1,3 +1,39 @@
+# [Menjadi React Web Developer Expert](https://www.dicoding.com/academies/418/) | Submission 2
+
+## Kriteria
+
+- [x] Kriteria Utama 1: Automation Testing
+  - [x] Buat minimal dua pengujian fungsi Reducer.
+  - [x] Buat minimal dua pengujian Thunk Function.
+  - [x] Buat minimal dua pengujian React Components.
+  - [x] Buat minimal satu pengujian End-to-End untuk alur login aplikasi.
+  - [x] Wajib menulis skenario pengujian pada masing-masing berkas pengujian.
+  - [x] Pengujian dapat dijalankan dengan perintah npm test dan npm run e2e.
+- [x] Kriteria Utama 2: Deployment Aplikasi
+  - [x] Deploy aplikasi dengan menggunakan teknik CI/CD.
+  - [x] Continuous Integration diterapkan dengan GitHub Actions.
+  - [x] Continuous Deployment diterapkan dengan Vercel.
+  - [x] Memproteksi branch master.
+  - [x] Melampirkan URL Vercel aplikasi Anda pada catatan submission.
+  - [x] Melampirkan screenshot sebagai bukti telah menerapkan konfigurasi CI/CD dan branch protection dengan benar. Screenshot yang perlu dilampirkan:
+- [x] Kriteria Utama 3: Memanfaatkan Salah Satu Ecosystem React
+- [x] Kriteria Utama 4: Mempertahankan Kriteria Submission Sebelumnya
+
+## Saran
+
+- [x] Terdapat lebih dari tiga pengujian fungsi reducer.
+- [x] Terdapat lebih dari tiga pengujian fungsi thunks.
+- [x] Terdapat lebih dari tiga pengujian pada React Component.
+- [x] Memiliki minimal 2 stories komponen.
+- [x] Menerapkan saran pada submission sebelumnya seperti:
+  - [x] fitur votes pada thread dan komentar;
+  - [x] menampilkan leaderboard;
+  - [x] filter daftar thread berdasarkan kategori
+- [x] Saran lainnya.:
+  - [x] Aplikasi yang Anda bangun mudah untuk digunakan. Contohnya, tidak membuat pengguna bingung dan menggunakan warna yang mudah dalam membaca teks.
+  - [x] menampilkan leaderboard;
+  - [x] Aplikasi yang Anda bangun memiliki tampilkan yang menarik.
+
 # [Menjadi React Web Developer Expert](https://www.dicoding.com/academies/418/) | Submission 1
 
 ## Kriteria
@@ -68,4 +104,19 @@
   ```bash
   npm install
   npm run build
+  ```
+
+## Tests
+
+- Dengan `run_assist.sh` (docker)
+
+  ```bash
+  ./run_assist.sh --run-ci-test
+  ```
+
+- Tanpa docker
+
+  ```bash
+  npm install
+  npm run ci:test
   ```

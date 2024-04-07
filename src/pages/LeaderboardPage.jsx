@@ -1,29 +1,11 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-
 import LeaderboardList from "../components/leaderboard/LeaderboardList"
-import { leaderboardThunks } from "../states/leaderboard/action"
+import useLeaderboardPage from "../hooks/useLeaderboardPage"
 
 const LeaderboardPage = () => {
-    const [isLoadData, setIsLoadData] = useState(true)
-    const dispatch = useDispatch()
-
-    const leaderboard = useSelector((states) => states.leaderboard)
-
-    useEffect(() => {
-        (
-            async () => {
-                if (isLoadData) {
-                    await dispatch(leaderboardThunks.asyncSetLeaderboard())
-                }
-                setIsLoadData(false)
-            }
-        )()
-    }, [dispatch, isLoadData])
-
+    const { isLoadData, leaderboard } = useLeaderboardPage()
     return (
         <div className="container mx-auto my-5">
-            <LeaderboardList leaderboard={leaderboard} isLoading={isLoadData} />
+            <LeaderboardList leaderboards={leaderboard} isLoading={isLoadData} />
         </div>
     )
 }

@@ -25,39 +25,35 @@ export const threadAction = {
             },
         }
     },
-    upVoteThread(userId, threadId) {
+    upVoteThread(userId) {
         return {
             type: ThreadActionType.UP_VOTE,
             payload: {
-                userId,
-                threadId
+                userId
             }
         }
     },
-    neutralizeUpVoteThread(userId, threadId) {
+    neutralizeUpVoteThread(userId) {
         return {
             type: ThreadActionType.NEUTRALIZE_UP_VOTE,
             payload: {
-                userId,
-                threadId
+                userId
             }
         }
     },
-    downVoteThread(userId, threadId) {
+    downVoteThread(userId) {
         return {
             type: ThreadActionType.DOWN_VOTE,
             payload: {
-                userId,
-                threadId
+                userId
             }
         }
     },
-    neutralizeDownVoteThread(userId, threadId) {
+    neutralizeDownVoteThread(userId) {
         return {
             type: ThreadActionType.NEUTRALIZE_DOWN_VOTE,
             payload: {
-                userId,
-                threadId
+                userId
             }
         }
     },
@@ -133,8 +129,7 @@ export const threadThunks = {
                 throw new Error(message)
             }
             dispatch(threadAction.upVoteThread(
-                auth.id,
-                threadId
+                auth.id
             ))
             dispatch(hideLoading())
         }
@@ -152,8 +147,7 @@ export const threadThunks = {
                 throw new Error(message)
             }
             dispatch(threadAction.neutralizeUpVoteThread(
-                auth.id,
-                threadId
+                auth.id
             ))
             dispatch(hideLoading())
         }
@@ -172,7 +166,6 @@ export const threadThunks = {
             }
             dispatch(threadAction.downVoteThread(
                 auth.id,
-                threadId
             ))
             dispatch(hideLoading())
         }
@@ -191,7 +184,6 @@ export const threadThunks = {
             }
             dispatch(threadAction.neutralizeDownVoteThread(
                 auth.id,
-                threadId
             ))
             dispatch(hideLoading())
         }

@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "mgmcdermott.vscode-language-babel",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker",
+        "esbenp.prettier-vscode",
+    ]
+}
