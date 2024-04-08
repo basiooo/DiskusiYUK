@@ -1,3 +1,10 @@
+/**
+ * Test Scenarios
+ * 
+ * - Header component
+ *   - should displays a user dropdown with logout button when the user is authenticated
+ *   - should displays a login button when the user is not authenticated
+ */
 import { cleanup, render, screen } from '@testing-library/react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
@@ -15,7 +22,7 @@ describe('Header Component', () => {
     afterEach(() => {
         cleanup()
     })
-    it('should displays a user dropdown when the user is authenticated', () => {
+    it('should displays a user dropdown with logout button when the user is authenticated', () => {
         useSelector.mockReturnValue(generateUser())
 
         render(

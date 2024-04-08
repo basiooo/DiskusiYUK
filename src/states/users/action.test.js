@@ -1,3 +1,10 @@
+/**
+ * Test Scenarios
+ * 
+ * - usersThunks.asyncGetUsers
+ *   - should dispatch action correctly when data fetching success
+ *   - should dispatch action correctly and trow Error when data fetching fails
+ */
 import { hideLoading, showLoading } from 'react-redux-loading-bar'
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -27,7 +34,7 @@ describe("usersThunks.asyncGetUsers", () => {
         delete usersAPI._getUsers
     })
 
-    it("should dispatch action correctly when data fetching success'", async () => {
+    it("should dispatch action correctly when data fetching success", async () => {
         usersAPI.getUsers = () => Promise.resolve(fakeUsersResponseSuccess)
 
         const dispatch = vi.fn()
@@ -39,7 +46,7 @@ describe("usersThunks.asyncGetUsers", () => {
         expect(dispatch).toHaveBeenCalledWith(hideLoading())
     })
 
-    it("should dispatch action correctly when data fetching failed'", async () => {
+    it("should dispatch action correctly and trow Error when data fetching fails", async () => {
         usersAPI.getUsers = () => Promise.resolve(fakeUsersResponseFailed)
 
         const dispatch = vi.fn()

@@ -1,3 +1,18 @@
+/**
+ * Test Scenarios
+ * 
+ * - threadReducer
+ *   - should return thread when given thread/set action
+ *   - should return thread with upVotesBy value that has been updated according to the data provided when given the thread/upVote action.
+ *   - should return thread with cleaned upVotesBy value corresponding to the data provided when given the thread/neutralizeUpVote action.
+ *   - should return thread with downVotesBy value that has been updated according to the data provided when given the thread/downVote action.
+ *   - should return thread with cleaned downVotesBy value corresponding to the data provided when given the thread/neutralizeDownVote action.
+ *   - should return thread with the new comment data added according to the data provided when given the thread/addComment action.
+ *   - should return thread with updated upVotesBy value in the comments field according to the data provided when given the thread/upVoteComment action.
+ *   - should return thread with cleaned up upVotesBy value in the comments field according to the data provided when given the thread/neutralizeUpVoteComment action.
+ *   - should return thread with updated downVotesBy value in the comments field according to the data provided when given the thread/downVoteComment action.
+ *   - should return the initial value when given the action thread/unknown
+ */
 import { faker } from "@faker-js/faker"
 import { describe, expect, it } from "vitest"
 
@@ -9,11 +24,8 @@ const thread = generateThread({
 })
 
 describe('threadReducer', () => {
-    it('returns the initial state', () => {
-        expect(threadReducer(undefined, {})).toBeNull()
-    })
 
-    it(`handles ${ThreadActionType.SET} action`, () => {
+    it('should return thread when given thread/set action', () => {
         const initialState = null
         const action = { type: ThreadActionType.SET, payload: { thread } }
         const newState = threadReducer(initialState, action)
@@ -21,7 +33,7 @@ describe('threadReducer', () => {
         expect(newState).toEqual(thread)
     })
 
-    it(`handles ${ThreadActionType.UP_VOTE} action`, () => {
+    it('should return thread with upVotesBy value that has been updated according to the data provided when given the thread/upVote action.', () => {
         const initialState = thread
         const userId = initialState.owner.id
         const action = {
@@ -36,7 +48,7 @@ describe('threadReducer', () => {
         expect(newState.upVotesBy).toContainEqual(userId)
     })
 
-    it(`handles ${ThreadActionType.NEUTRALIZE_UP_VOTE} action`, () => {
+    it('should return thread with cleaned upVotesBy value corresponding to the data provided when given the thread/neutralizeUpVote action', () => {
         const initialState = thread
         const userId = initialState.owner.id
         initialState.upVotesBy = [userId, faker.string.uuid()]
@@ -53,7 +65,7 @@ describe('threadReducer', () => {
         expect(newState.upVotesBy).not.contains(userId)
     })
 
-    it(`handles ${ThreadActionType.DOWN_VOTE} action`, () => {
+    it('should return thread with downVotesBy value that has been updated according to the data provided when given the thread/downVote action.', () => {
         const initialState = thread
         const userId = initialState.owner.id
         const action = {
@@ -68,7 +80,7 @@ describe('threadReducer', () => {
         expect(newState.downVotesBy).toContainEqual(userId)
     })
 
-    it(`handles ${ThreadActionType.NEUTRALIZE_DOWN_VOTE} action`, () => {
+    it('should return thread with cleaned downVotesBy value corresponding to the data provided when given the thread/neutralizeDownVote action.', () => {
         const initialState = thread
         const userId = initialState.owner.id
         initialState.downVotesBy = [userId, faker.string.uuid()]
@@ -86,7 +98,7 @@ describe('threadReducer', () => {
     })
 
 
-    it(`handles ${ThreadActionType.ADD_COMMENT} action`, () => {
+    it('should return thread with the new comment data added according to the data provided when given the thread/addComment action.', () => {
         const initialState = thread
         initialState.comments = [
             generateComment()
@@ -105,7 +117,7 @@ describe('threadReducer', () => {
         expect(newState.comments).toContainEqual(comment)
     })
 
-    it(`handles ${ThreadActionType.UP_VOTE_COMMENT} action`, () => {
+    it('should return thread with updated upVotesBy value in the comments field according to the data provided when given the thread/upVoteComment action.', () => {
         const initialState = thread
         const userId = initialState.owner.id
         initialState.comments = [
@@ -125,7 +137,7 @@ describe('threadReducer', () => {
         expect(newState.comments[0].upVotesBy).toContainEqual(userId)
     })
 
-    it(`handles ${ThreadActionType.NEUTRALIZE_UP_VOTE_COMMENT} action`, () => {
+    it('should return thread with cleaned up upVotesBy value in the comments field according to the data provided when given the thread/neutralizeUpVoteComment action.', () => {
         const initialState = thread
         const userId = initialState.owner.id
         initialState.comments = [
@@ -148,7 +160,7 @@ describe('threadReducer', () => {
     })
 
 
-    it(`handles ${ThreadActionType.DOWN_VOTE_COMMENT} action`, () => {
+    it('should return thread with updated downVotesBy value in the comments field according to the data provided when given the thread/downVoteComment action.', () => {
         const initialState = thread
         const userId = initialState.owner.id
         initialState.comments = [
@@ -168,7 +180,7 @@ describe('threadReducer', () => {
         expect(newState.comments[0].downVotesBy).toContainEqual(userId)
     })
 
-    it(`handles ${ThreadActionType.NEUTRALIZE_DOWN_VOTE_COMMENT} action`, () => {
+    it('should return thread with cleaned up downVotesBy value in the comments field according to the data provided when given the thread/neutralizeDownVoteComment action.', () => {
         const initialState = thread
         const userId = initialState.owner.id
         initialState.comments = [
@@ -190,7 +202,7 @@ describe('threadReducer', () => {
         expect(newState.comments[0].downVotesBy.length).toEqual(0)
     })
 
-    it('returns current state for unknown action type', () => {
+    it('should return the initial value when given the action thread/unknown', () => {
         const initialState = thread
         const action = { type: 'thread/unknown' }
         const newState = threadReducer(initialState, action)

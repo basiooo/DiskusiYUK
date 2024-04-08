@@ -1,3 +1,10 @@
+/**
+ * Test Scenarios
+ * 
+ * - leaderboardThunks.asyncSetLeaderboard
+ *   - should dispatch action correctly when data fetching success
+ *   - should dispatch action correctly and trow Error when data fetching fails
+ */
 import { hideLoading, showLoading } from 'react-redux-loading-bar'
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -38,7 +45,7 @@ describe("leaderboardThunks.asyncSetLeaderboard", () => {
         expect(dispatch).toHaveBeenCalledWith(hideLoading())
     })
 
-    it("should dispatch action correctly when data fetching failed'", async () => {
+    it("should dispatch action correctly and trow Error when data fetching fails", async () => {
         leaderboardAPI.getLeaderboard = () => Promise.resolve(fakeLeaderboardResponseFailed)
 
         const dispatch = vi.fn()

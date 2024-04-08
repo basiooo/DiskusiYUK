@@ -1,3 +1,17 @@
+/**
+ * Test Scenarios
+ * 
+ * - authThunks.asyncLogout
+ *   - should dispatch action correctly when success logout
+ * 
+ * - authThunks.asyncLogin 
+ *   - should dispatch action correctly when success login
+ *   - should dispatch action correctly when login failed
+ * 
+ * - authThunks.asyncRegister
+ *   - should dispatch action correctly when success register
+ *   - should dispatch action correctly when register failed
+ */
 import { hideLoading, showLoading } from 'react-redux-loading-bar'
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -47,7 +61,7 @@ const fakeRegisterResponseFailed = {
 }
 
 describe("authThunks.asyncLogout", () => {
-    it("should dispatch action logout success'", async () => {
+    it("should dispatch action correctly when success logout", async () => {
         const dispatch = vi.fn()
         await authThunks.asyncLogout()(dispatch)
         expect(dispatch).toHaveBeenCalledWith(authAction.unset())
@@ -64,7 +78,7 @@ describe("authThunks.asyncLogin", () => {
         delete usersAPI._me
         delete authAPI._login
     })
-    it("should dispatch action Login success'", async () => {
+    it("should dispatch action correctly when success login", async () => {
         authAPI.login = () => Promise.resolve(fakeLoginResponseSuccess)
         usersAPI.me = () => Promise.resolve(fakeMeResponseSuccess)
         const dispatch = vi.fn()
@@ -78,7 +92,7 @@ describe("authThunks.asyncLogin", () => {
         expect(dispatch).toHaveBeenCalledWith(hideLoading())
     })
 
-    it("should dispatch action Login failed'", async () => {
+    it("should dispatch action correctly when login failed", async () => {
         authAPI.login = () => Promise.resolve(fakeLoginResponseFailed)
         const dispatch = vi.fn()
 
@@ -100,7 +114,7 @@ describe("authThunks.asyncRegister", () => {
         authAPI.register = authAPI._register
         delete authAPI._register
     })
-    it("should dispatch action Register success'", async () => {
+    it("should dispatch action correctly when success register", async () => {
         authAPI.register = () => Promise.resolve(fakeRegisterResponseSuccess)
         const dispatch = vi.fn()
         await authThunks.asyncRegister({
@@ -113,7 +127,7 @@ describe("authThunks.asyncRegister", () => {
         expect(dispatch).toHaveBeenCalledWith(hideLoading())
     })
 
-    it("should dispatch action Register failed'", async () => {
+    it("should dispatch action correctly when register failed", async () => {
         authAPI.register = () => Promise.resolve(fakeRegisterResponseFailed)
         const dispatch = vi.fn()
 

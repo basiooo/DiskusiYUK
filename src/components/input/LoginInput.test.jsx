@@ -1,3 +1,11 @@
+/**
+ * Test Scenarios
+ * 
+ * - LoginInput component
+ *   - should the email value be the same as typed
+ *   - should the password value be the same as typed
+ *   - should call the register function and disable the register button for some time after the form is submitted.
+ */
 import '@testing-library/jest-dom/vitest'
 
 import { cleanup, render, screen } from "@testing-library/react"
@@ -12,7 +20,7 @@ describe("LoginInput component", () => {
         cleanup()
     })
 
-    it("should email value correct", async () => {
+    it("should the email value be the same as typed", async () => {
         const emailValue = "test@mail.com"
         render(<LoginInput login={() => { }} />)
         const email = screen.getByPlaceholderText("Email")
@@ -20,14 +28,14 @@ describe("LoginInput component", () => {
         expect(email).toHaveValue(emailValue)
     })
 
-    it("should password value correct", async () => {
+    it("should the password value be the same as typed", async () => {
         const passwordValue = "1234567"
         render(<LoginInput login={() => { }} />)
         const password = screen.getByPlaceholderText("Password")
         await userEvent.type(password, passwordValue)
         expect(password).toHaveValue(passwordValue)
     })
-    it("should call login() and disable button when login button is clicked", async () => {
+    it("should call the login function and disable the login button for some time after the form is submitted.", async () => {
         const login = vi.fn()
         render(<LoginInput login={login} />)
         const password = screen.getByPlaceholderText("Password")

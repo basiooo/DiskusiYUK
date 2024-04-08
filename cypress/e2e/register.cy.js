@@ -1,3 +1,12 @@
+/**
+ * Test Scenarios
+ * 
+ * - Register spec
+ *   - should display register page correctly
+ *   - should prevent register when name, email and password are empty
+ *   - should prevent register when invalid email format
+ *   - should redirect to login page when success register
+ */
 import { faker } from "@faker-js/faker"
 import { v4 as uuidv4 } from 'uuid'
 describe('Register spec', () => {

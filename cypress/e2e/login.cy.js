@@ -1,3 +1,13 @@
+/**
+ * Test Scenarios
+ * 
+ * - Login spec
+ *   - should display register page correctly
+ *   - should prevent login when email and password are empty
+ *   - should prevent login when invalid email format
+ *   - should display toast when login email and password are wrong
+ *   - should display toast and redirect to home page when success login
+ */
 import { faker } from "@faker-js/faker"
 
 describe('Login spec', () => {
@@ -30,7 +40,7 @@ describe('Login spec', () => {
     cy.get('div[aria-live="polite"]').should('have.text', "Error: email or password is wrong")
   })
 
-  it('should redirect to home when login email and password are correct', () => {
+  it('should display toast and redirect to home page when success login', () => {
     cy.get('#email').type("user@user.com")
     cy.get('#password').type("user@user.com")
     cy.get('button[type="submit"]').click()

@@ -1,3 +1,12 @@
+/**
+ * Test Scenarios
+ * 
+ * - RegisterInput component
+ *   - should the name value be the same as typed
+ *   - should the email value be the same as typed
+ *   - should the password value be the same as typed
+ *   - should call the register function and disable the register button for some time after the form is submitted.
+ */
 import '@testing-library/jest-dom/vitest'
 
 import { cleanup, render, screen } from "@testing-library/react"
@@ -12,7 +21,7 @@ describe("RegisterInput component", () => {
         cleanup()
     })
 
-    it("should name value correct", async () => {
+    it("should the name value be the same as typed", async () => {
         const NameValue = "Laravelia"
         render(<RegisterInput register={() => { }} />)
         const name = screen.getByPlaceholderText("Name")
@@ -20,7 +29,7 @@ describe("RegisterInput component", () => {
         expect(name).toHaveValue(NameValue)
     })
 
-    it("should email value correct", async () => {
+    it("should the email value be the same as typed", async () => {
         const emailValue = "test@mail.com"
         render(<RegisterInput register={() => { }} />)
         const email = screen.getByPlaceholderText("Email")
@@ -28,7 +37,7 @@ describe("RegisterInput component", () => {
         expect(email).toHaveValue(emailValue)
     })
 
-    it("should password value correct", async () => {
+    it("should the password value be the same as typed", async () => {
         const passwordValue = "1234567"
         render(<RegisterInput register={() => { }} />)
         const password = screen.getByPlaceholderText("Password")
@@ -36,7 +45,7 @@ describe("RegisterInput component", () => {
         expect(password).toHaveValue(passwordValue)
     })
 
-    it("should call register() and disable button when register button is clicked", async () => {
+    it("should call the register function and disable the register button for some time after the form is submitted.", async () => {
         const register = vi.fn()
         render(<RegisterInput register={register} />)
         const password = screen.getByPlaceholderText("Password")

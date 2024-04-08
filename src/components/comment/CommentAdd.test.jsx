@@ -1,3 +1,10 @@
+/**
+ * Test Scenarios
+ * 
+ * - CommentAdd component
+ *   - should displays a login button when the user is not authenticated
+ *   - should displays a comment input when the user is authenticated
+ */
 import "@testing-library/jest-dom/vitest"
 
 import { cleanup, render, screen } from "@testing-library/react"
